@@ -18,11 +18,12 @@ after_script:
 - echo "<meta http-equiv=refresh content=0;url=const_time_enc/index.html>" > index.html
 - git add .
 - git commit -m "Deploy to GitHub Pages"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null
+  2>&1
 env:
   global:
-  - GH_REF: github.com/ceph3us/const_time_enc.git
-
+  - GH_REF: github.com/ceph3us/const-time-enc-rs.git
+  - secure: rGsb0UpksGLOkksg1WzgOLd8BNMW1Q8s4fIiDwB1FVR7/uZT3+yCmy7NFHBxlfph377SK0Mk082J0HOA5QiDxGfpPsGUcfzgtRvzjNAo+uW6WZY7n9vzABNUJgJxUWATQp9W59K7mZrKQQgeuUTOL6FStxjZ8L/bq/qXhdD57eNtueFI7H5froqgeIBpNGpqbUIu7Qn9k+g6YnfK+gA+EqVVqpelF1lr1gLP9fBruloxPjuoDol2CwHKyBHRRx2zQ8Vgz6p4JxPvJtSGogF3q8K0smJUSTabrRpujoOYMws35Qg5t0D14+Eb5czqhxqqAxVvaBNkalg3ekG+gWMODN2xlhi4UNjh1uePtZbFWvwcHhLHa8Xl+5M4MZCgaojmaMzGCIyeq/YzHv9xliC/uZgwfKpis9COqZMLEFVUCXGserE9KBl01j5VRgmPYa6+E5WQ+9bj1ezI7FXrQscWqantDkMD6O7X3C7m6nAy+gvAneWrsBMJp3RpAT7ouuORM6/y3X0/RsQPyemwAu8unWTWd0Gzq55fmQkbYG+OaqwHjk5ZAOqNp8AtnsEA431LvFKpfUTieG0IXTTNubXRAoJYA2fvPwR9g5kJvzq28VdsGTFAPL6xcpDlCCac1+wLxxjFQn8svoEgpKp64a/Lz16lvoPmxCmLWzCjBR5ATn4=
 branches:
   except:
-  - /.*(.tmp)$/
+  - "/.*(.tmp)$/"
