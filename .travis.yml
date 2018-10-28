@@ -3,25 +3,35 @@ cache: cargo
 os:
 - linux
 - osx
+- windows
 rust:
 - stable
 - beta
 - nightly
 sudo: false
+before_cache: |
+  if [[ "$TRAVIS_RUST_VERSION" == nightly ]]; then
+    RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin
+  fi
 script:
 - cargo build --verbose
 - cargo test --verbose
 - cargo doc
-after_script:
-- cd target/doc
-- git init
-- git config user.name "Travis CI"
-- git config user.email "ceph3us@users.noreply.github.com"
-- echo "<meta http-equiv=refresh content=0;url=const_time_enc/index.html>" > index.html
-- git add .
-- git commit -m "Deploy to GitHub Pages"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null
-  2>&1
+after_script: |
+  if [[ "$TRAVIS_RUST_VERSION" == stable ]]; then
+    cd target/doc
+    git init
+    git config user.name "Travis CI"
+    git config user.email "ceph3us@users.noreply.github.com"
+    echo "<meta http-equiv=refresh content=0;url=const_time_enc/index.html>" > index.html
+    git add .
+    git commit -m "Deploy to GitHub Pages"
+    git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null
+  fi
+after_success: |
+  if [[ "$TRAVIS_RUST_VERSION" == nightly ]]; then
+     cargo tarpaulin --ciserver travis-ci --coveralls $TRAVIS_JOB_ID
+  fi
 env:
   global:
   - GH_REF: github.com/ceph3us/const-time-enc-rs.git
