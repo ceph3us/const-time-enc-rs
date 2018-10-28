@@ -1,0 +1,28 @@
+language: rust
+rust:
+- stable
+- beta
+- nightly
+sudo: false
+script:
+- cargo build --verbose
+- cargo test --verbose
+- cargo test --verbose --no-default-features
+- cargo test --verbose --no-default-features --features std
+- cargo doc
+after_script:
+- cd target/doc
+- git init
+- git config user.name "Travis CI"
+- git config user.email "ceph3us@users.noreply.github.com"
+- echo "<meta http-equiv=refresh content=0;url=const_time_enc/index.html>" > index.html
+- git add .
+- git commit -m "Deploy to GitHub Pages"
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+env:
+  global:
+  - GH_REF: github.com/ceph3us/const_time_enc.git
+
+branches:
+  except:
+  - /.*(.tmp)$/

@@ -1,0 +1,34 @@
+const_time_enc
+==============
+
+[![Build Status](https://travis-ci.org/ceph3us/const_time_enc.svg?branch=master)](https://travis-ci.org/ceph3us/const_time_enc)
+[![Latest Version](https://img.shields.io/crates/v/const_time_enc.svg)](https://crates.io/crates/const_time_enc) 
+
+A crate containing a Rust port of
+[ParagonIE's constant time encodings for PHP][cte-php].
+
+WARNING
+-------
+
+As per the terms of the [license](LICENSE), no guarantee of correctness,
+fitness for use, or acceptance of liability is made. I am not a professional
+cryptographer and I nor anyone else have audited this code. All use is strictly
+at your own risk.
+
+The performance will already be significantly worse than any lookup-based
+hex/base64 encoding, so
+
+FEATURES
+--------
+
+ - [x] Base64 encoding
+ - [x] Base64 decoding
+ - [ ] Hex (base16) encoding
+ - [ ] Hex (base16) decoding
+ - [ ] Base32 encoding
+ - [ ] Base32 decoding
+ - [ ] Base32 (hex variant) encoding
+ - [ ] Base32 (hex variant) decoding
+ - [ ] `#![no_std]` support
+ 
+[cte-php]: https://github.com/paragonie/constant_time_encoding

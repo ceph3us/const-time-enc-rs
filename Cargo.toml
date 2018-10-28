@@ -1,0 +1,16 @@
+[package]
+name = "const_time_enc"
+description = "a Rust port of ParagonIE's constant time encodings for PHP"
+license-file = "LICENSE"
+version = "0.1.0"
+authors = ["Michael Holmes <michael.holmes@protonmail.ch>"]
+repository = "https://github.com/ceph3us/const_time_enc"
+
+[dependencies]
+
+[dev-dependencies]
+quickcheck = "0.7"
+
+[features]
+test = []
+bench = ["test"]
