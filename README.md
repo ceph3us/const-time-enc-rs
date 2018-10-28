@@ -16,7 +16,8 @@ cryptographer and I nor anyone else have audited this code. All use is strictly
 at your own risk.
 
 The performance will already be significantly worse than any lookup-based
-hex/base64 encoding, so
+hex/base64 encoding, but be aware that since this library does not have or
+intend to have unsafe code, it may not be suitably performant for your usecase.
 
 FEATURES
 --------
