@@ -1,11 +1,11 @@
 const_time_enc
 ==============
 
-[![Build Status](https://travis-ci.org/ceph3us/const_time_enc.svg?branch=master)](https://travis-ci.org/ceph3us/const_time_enc)
+[![Build Status](https://travis-ci.org/ceph3us/const-time-enc-rs.svg?branch=master)](https://travis-ci.org/ceph3us/const-time-enc-rs)
 [![Latest Version](https://img.shields.io/crates/v/const_time_enc.svg)](https://crates.io/crates/const_time_enc) 
 
 A crate containing a Rust port of
-[ParagonIE's constant time encodings for PHP][cte-php].
+[ParagonIE's constant time encodings for PHP][cte-php]. No extra dependencies.
 
 WARNING
 -------
